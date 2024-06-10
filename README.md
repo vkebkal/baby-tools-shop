@@ -3,8 +3,15 @@
 ### TECHNOLOGIES
 
 - Python 3.9
-- Django
+- Django 4.0.2
 - Venv
+
+### Hints
+
+This section will cover some hot tips when trying to interacting with this repository:
+
+- Settings & Configuration for Django can be found in `babyshop_app/babyshop/settings.py`
+- Routing: Routing information, such as available routes can be found from any `urls.py` file in `babyshop_app` and corresponding subdirectories
 
 ### Photos
 
