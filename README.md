@@ -1,91 +1,37 @@
-# Baby Tools Shop
+# E-Commerce Project For Baby Tools
 
-## Table of Contents
-- [About the Project](#about-the-project)
-- [Quickstart](#quickstart)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Security Notes](#security-notes)
+### TECHNOLOGIES
 
-## About the Project
-The Baby Tools Shop is a web application developed using Django. This repository contains all the necessary files to build and run the application in a Docker container. The main purpose of this repository is to provide an easy setup and deployment process for a basic e-commerce platform focusing on baby products.
+- Python 3.9
+- Django 4.0.2
+- Venv
 
-## Quickstart
+### Hints
 
-### Prerequisites
-- Docker
-- Git
+This section will cover some hot tips when trying to interacting with this repository:
 
-### Installation and Launch
-Clone the repository and navigate to the project directory:
+- Settings & Configuration for Django can be found in `babyshop_app/babyshop/settings.py`
+- Routing: Routing information, such as available routes can be found from any `urls.py` file in `babyshop_app` and corresponding subdirectories
 
-```bash
-git clone https://github.com/henrymanke/baby-tools-shop.git
-cd baby-tools-shop
-```
+### Photos
 
-Build the Docker image:
-```bash
-docker build -t baby-tools-shop .
-```
+##### Home Page with login
 
-Run the application with Docker, setting it up to automatically manage restarts and data persistence:
-```bash
-docker run --restart unless-stopped -p 8025:8025 -v /path/to/your/data:/data baby-tools-shop
-```
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323080815407.jpg"></img>
+##### Home Page with filter
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323080840305.jpg"></img>
+##### Product Detail Page
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323080934541.jpg"></img>
 
-The application should now be accessible via `http://localhost:8025`.
+##### Home Page with no login
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323080953570.jpg"></img>
 
-## Usage
 
-### Configuration
-This application uses environment variables for configuration to enhance security and protect sensitive data. To set up the environment variables:
+##### Register Page
 
-1. Create a file named `.env` in the root directory of your project.
-2. Add the following environment variables to the `.env` file and replace `<YOUR_VALUE>` with actual values:
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323081016022.jpg"></img>
 
-   ```plaintext
-   DATABASE_URL=<YOUR_DATABASE_URL>
-   SECRET_KEY=<YOUR_SECRET_KEY>
-   DEBUG=<True/False>
-   ALLOWED_HOSTS=<LIST_OF_HOSTS>
-   ```
 
-   Example:
-   ```plaintext
-   DATABASE_URL=postgres://username:password@localhost:5432/mydatabase
-   SECRET_KEY=myverysecretkey
-   DEBUG=False
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   ```
+##### Login Page
 
-### Running the Application
-After setting up the environment variables, you can start the application as follows:
-
-```bash
-docker run --env-file .env --restart unless-stopped -p 8025:8025 -v /path/to/your/data:/data baby-tools-shop
-```
-
-The application is now running on `http://localhost:8025`.
-
-### Useful Commands
-To further manage your application's lifecycle, you can execute the following Docker commands:
-
-- **Apply database migrations**: Execute the following command to apply migrations:
-  ```bash
-  docker exec -it <container_id> python manage.py migrate
-  ```
-
-- **Create an admin user**: To create an admin user, use:
-  ```bash
-  docker exec -it <container_id> python manage.py createsuperuser
-  ```
-
-## Security Notes
-- Do not store SSH keys, passwords, tokens, or usernames in your code. Use environment variables instead.
-- Avoid storing sensitive information such as IP addresses in the Git repository.
-- Follow the naming conventions for environment variables and shell variables to prevent errors in code interpretation.
-
-Feel free to contribute to this project by submitting issues or pull requests. For any questions, please submit an issue on GitHub.
-
-This update integrates the Docker configurations fully into the quick start and usage sections, emphasizing best practices for security and data persistence.
+<img alt="" src="https://github.com/MET-DEV/Django-E-Commerce/blob/master/project_images/capture_20220323081044867.jpg"></img>
