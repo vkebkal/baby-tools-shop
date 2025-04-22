@@ -1,3 +1,4 @@
+# Using a pre-built Docker image as the base for application
 FROM python:3.13.3-slim
 
 # Set working directory

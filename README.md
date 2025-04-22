@@ -1,6 +1,8 @@
 # 🍼 Baby Tools Shop
 
-An e-commerce web application built with Django for selling baby-related products like strollers, toys, clothing, and more. The goal of this repository is to provide a modular and extensible foundation for an online baby shop, including product categories, user authentication, shopping cart functionality, and administrative tools.
+Baby Tools Shop is a Django-powered e-commerce web application designed for selling baby products such as strollers, toys, clothing, and more. This project serves as a modular, scalable foundation for building a fully functional online baby store. It includes features like product categorization, user authentication, a shopping cart system, and an admin panel for easy product and category management.
+
+The goal of this repository is to provide developers with a flexible and extensible starting point for creating baby product-focused online shops, complete with built-in tools for customization and deployment.
 
 ---
 
@@ -8,12 +10,14 @@ An e-commerce web application built with Django for selling baby-related product
 
 - [🍼 Baby Tools Shop](#-baby-tools-shop)
 - [🚀 Quickstart](#-quickstart)
-- [⚙️ Usage](#️-usage)
+- [⚙️ Usage](#-usage)
   - [Configuration Overview](#configuration-overview)
   - [Running on local machine](#running-in-production)
+  - [Dockerfile Explanation](#dockerfile-explanation)
   - [Modifying Categories or Products in Admin Panel](#modifying-categories-or-products-in-admin-panel)
 - [📁 Project Structure](#-project-structure)
-- [🛠️ Technologies Used](#️-technologies-used)
+- [🛠️ Technologies Used](#-technologies-used)
+- [🖼️ Screenshots](#-screenshots)
 
 ---
 
@@ -30,6 +34,7 @@ An e-commerce web application built with Django for selling baby-related product
 You can start the development server easily using Docker:
 
 ```bash
+# Clone the project
 git clone <url>/baby-tools-shop.git
 cd baby-tools-shop
 
@@ -43,7 +48,7 @@ docker build -t babyshop-app -f Dockerfile .
 docker run -it -p 8025:8000 babyshop-app
 ```
 
-Now open your browser and go to [http://localhost:8025](http://localhost:8025)
+Now open your browser and go to [http://`<v-server-ip>`:8025](http://<v-server-ip>:8025)
 
 ---
 
@@ -102,15 +107,56 @@ Now open your browser and go to [http://localhost:8000](http://localhost:8000)
 
 Log into the admin panel:
 
-Runned on local machine :
+Run on local machine :
 [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
-Runned in docker :
-[http://127.0.0.1:8025/admin](http://127.0.0.1:8025/admin)
-
+Run in docker :
+[http://`<v-server-ip>`:8025/admin](http://<v-server-ip>:8025/admin)
 
 In the admin panel, edit categories and products to populate your store.
 
+
+### Dockerfile Explanation
+
+The Dockerfile in this project sets up a Docker container for running the Django application. Here's a breakdown of each command used in the Dockerfile:
+
+```dockerfile
+# Use a pre-built Docker image as the base for the application
+FROM python:3.13.3-slim
+```
+- This command uses the official Python 3.13.3-slim image as the base for your application, providing a minimal environment with Python pre-installed.
+
+```dockerfile
+# Set working directory
+WORKDIR /app
+```
+- Sets the working directory inside the container to `/app`. Any subsequent commands will be run from this directory.
+
+```dockerfile
+# Copy your Django project code into the container
+COPY . $WORKDIR
+```
+- Copies the contents of your local project (your Django project files) into the `/app` directory inside the container.
+
+```dockerfile
+# Install python dependencies
+RUN python -m pip install -r requirements.txt
+```
+- Installs the Python dependencies listed in `requirements.txt` using `pip`. These dependencies are necessary for your Django app to run properly.
+
+```dockerfile
+# Expose Django’s default port (8000)
+EXPOSE 8000
+```
+- Exposes port `8000`, which is Django’s default port for development. This allows access to the app from outside the container.
+
+```dockerfile
+# Run the Django app in the Docker container
+ENTRYPOINT ["/bin/sh", "-c", "cd babyshop_app && python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"]
+```
+- The `ENTRYPOINT` command starts the Django application inside the container. It first applies any database migrations using `python manage.py migrate` and then runs the Django development server on `0.0.0.0:8000`, making it accessible from outside the container.
+
+---
 ---
 
 ## 📁 Project Structure
@@ -123,7 +169,7 @@ baby-tools-shop/                  # Root directory of the project
 ├── requirements.txt              # Python dependencies (Django, Pillow, etc.)
 │
 ├── babyshop_app/                 # Main Django application
-│   ├── babyshop/                 # Core module for the baby shop functionality (models, views, etc.)
+│   ├── babyshop/                 # Core module for the baby shop functionality (models, views, setting, etc.)
 │   ├── db.sqlite3                # SQLite database file for local development
 │   ├── manage.py                 # Django project management script
 │   ├── media/                    # Folder for uploaded media (e.g., product images)
@@ -150,3 +196,20 @@ baby-tools-shop/                  # Root directory of the project
 - SQLite
 
 ---
+
+## 🖼️ Screenshots
+
+## Home Page
+<img src="project_images/capture-main.png" alt="Home Page" style="width:70%; border-radius:10px;" />
+
+## Home Page with Filter
+<img src="project_images/capture-main-filter.png" alt="Home Page with Filter" style="width:70%; border-radius:10px;" />
+
+## Login Page
+<img src="project_images/capture-login.png" alt="Home Page with Filter" style="width:70%; border-radius:10px;" />
+
+## Register Page
+<img src="project_images/capture-register.png" alt="Home Page with Filter" style="width:70%; border-radius:10px;" />
+
+## Admin Panel
+<img src="project_images/capture-admin-panel.png" alt="Home Page with Filter" style="width:70%; border-radius:10px;" />
