@@ -16,7 +16,6 @@ The goal of this repository is to provide developers with a flexible and extensi
   - [Dockerfile Explanation](#dockerfile-explanation)
   - [Modifying Categories or Products in Admin Panel](#modifying-categories-or-products-in-admin-panel)
 - [📁 Project Structure](#-project-structure)
-- [🛠️ Technologies Used](#-technologies-used)
 - [🖼️ Screenshots](#-screenshots)
 
 ---
@@ -35,21 +34,34 @@ You can start the development server easily using Docker:
 
 ```bash
 # Clone the project
-git clone <url>/baby-tools-shop.git
-cd baby-tools-shop
+git clone https://github.com/vkebkal/baby-tools-shop.git
+```
 
+```bash
+cd baby-tools-shop
+```
+
+```bash
 # Create user to login into admin panel if not exist
 python3 manage.py createsuperuser
+```
 
+```bash
 # Build the image
 docker build -t babyshop-app -f Dockerfile .
+```
 
+```bash
 # Run the container
 docker run -it -p 8025:8000 babyshop-app
 ```
 
-Now open your browser and go to [http://`<v-server-ip>`:8025](http://<v-server-ip>:8025)
+```bash
+# Or run the container in detached mode
+docker run -d -it -p 8025:8000 babyshop-app
+```
 
+Now open your browser and go to [http://`<v-server-ip>`:8025](http://<v-server-ip>:8025)
 ---
 
 ## ⚙️ Usage
@@ -67,12 +79,23 @@ The app is structured to allow easy configuration and customization. You can con
 ### Running on local machine
 To run the app locally without Docker, follow these steps:
 
-1. **Create a Virtual Environment:**
+1. **Clone the project and go into the baby-tools-shop directory:**
+
+```bash
+# Clone the project
+git clone https://github.com/vkebkal/baby-tools-shop.git
+```
+
+```bash
+cd baby-tools-shop
+```
+
+2. **Create a Virtual Environment:**
 ```bash
 python3 -m venv venv
 ```
 
-2. **Activate the Virtual Environment:**
+3. **Activate the Virtual Environment:**
 
 On macOS/Linux:
 ```bash
@@ -84,24 +107,41 @@ On Windows:
 venv\Scripts\activate
 ```
 
-3. **Install the Required Dependencies:**
+4. **Install the Required Dependencies:**
 ```bash
 python3 -m pip install -r requirements.txt
 ```
 
-4. **Create a Superuser to Manage the App:**
+5. **Create a Superuser to Manage the App:**
 ```bash
 cd babyshop_app/
 python3 manage.py createsuperuser
 ```
 
-5. **Apply Migrations and Run Server:**
+6. **Apply Migrations and Run Server:**
 ```bash
 python3 manage.py migrate
+```
+
+```bash
 python3 manage.py runserver
 ```
 
 Now open your browser and go to [http://localhost:8000](http://localhost:8000)
+
+7. **Alternatively to 6. you can start docker contanier locally**
+
+```bash
+# Build the image
+docker build -t babyshop-app -f Dockerfile .
+```
+
+```bash
+# Run the container
+docker run -it -p 8025:8000 babyshop-app
+```
+Now open your browser and go to [http://localhost:8025](http://localhost:8025)
+
 
 ### Modifying Categories or Products in Admin Panel
 
@@ -148,7 +188,7 @@ RUN python -m pip install -r requirements.txt
 # Expose Django’s default port (8000)
 EXPOSE 8000
 ```
-- Exposes port `8000`, which is Django’s default port for development. This allows access to the app from outside the container.
+- Exposes port `8000`, which is Django’s default port for development.
 
 ```dockerfile
 # Run the Django app in the Docker container
@@ -186,15 +226,6 @@ baby-tools-shop/                  # Root directory of the project
     ├── .gitignore                # Git ignore file for the virtual environment
     └── pyvenv.cfg                # Virtual environment configuration file
 ```
----
-
-## 🛠️ Technologies Used
-
-- Python 3.13
-- Django
-- Docker
-- SQLite
-
 ---
 
 ## 🖼️ Screenshots
