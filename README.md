@@ -42,6 +42,11 @@ cd baby-tools-shop
 ```
 
 ```bash
+# Initialize .env with defaults (e.g., ALLOWED_HOSTS) by copying example.env
+cp example.env .env
+```
+
+```bash
 # Create user to login into admin panel if not exist
 python3 manage.py createsuperuser
 ```
@@ -88,6 +93,11 @@ git clone https://github.com/vkebkal/baby-tools-shop.git
 
 ```bash
 cd baby-tools-shop
+```
+
+```bash
+# Initialize .env with defaults (e.g., ALLOWED_HOSTS) by copying example.env
+cp example.env .env
 ```
 
 2. **Create a Virtual Environment:**
@@ -207,6 +217,7 @@ baby-tools-shop/                  # Root directory of the project
 ├── LICENSE                       # Project license file
 ├── README.md                     # Main README file for project documentation
 ├── requirements.txt              # Python dependencies (Django, Pillow, etc.)
+├── example.env                   # Example .env file containing default settings, including ALLOWED_HOSTS
 │
 ├── babyshop_app/                 # Main Django application
 │   ├── babyshop/                 # Core module for the baby shop functionality (models, views, setting, etc.)
