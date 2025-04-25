@@ -66,7 +66,7 @@ docker run -it -p 8025:8000 babyshop-app
 docker run -d -it -p 8025:8000 babyshop-app
 ```
 
-Now open your browser and go to [http://`<v-server-ip>`:8025](http://<v-server-ip>:8025)
+Now open your browser and go to [http://`<your-ip>`:8025](http://<your-ip>:8025)
 ---
 
 ## ⚙️ Usage
